@@ -4,7 +4,7 @@ using Bootcamp_Week2_Day1.Repository;
 using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Mvc;
 using System.Reflection;
-
+using Bootcamp_Week2_Day1.Middleware;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -29,7 +29,7 @@ builder.Services.AddScoped<NotFoundProductFilter>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-
+app.UseGlobalExceptionMiddleware();
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
